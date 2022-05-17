@@ -1,0 +1,21 @@
+extends admin
+
+block details
+    form(id='editCat', action='/admin/cat/' + category.CategoryID + '/edit', method='POST', enctype="multipart/form-data")
+        label(for='name') Category Name
+        br
+        input(type='text', id='name', name='name', value=category.CategoryName, required=true)
+        br
+        label(for='description') Description
+        br
+        textarea(id='description', name='description', required=true)= category.Description
+        br
+        label(for='image') Category Image
+        br
+        if category.Image
+            img.dev-img(src='/img/categories/' + category.Image, alt=category.CategoryName)
+            input(type='file', id='image', name='image' value='/img/categories/' + category.Image,accept="image/png, image/jpeg",)
+        else
+            input(type='file', id='image', name='image')
+        br
+        button.dev-btn.btn.btn-default(type='submit') Submit

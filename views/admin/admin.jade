@@ -1,0 +1,63 @@
+extends ../layout
+
+block content
+    section
+        .container
+            .row
+                //title here. no duplicate
+                //if navList
+                .col-sm-3
+                    // nav-bar
+                    .left-sidebar
+                        #accordian.panel-group.category-products
+                            .panel.panel-default
+                                .panel-heading
+                                    h4.panel-title
+                                        a(href='/admin/cat') Categories
+                            .panel.panel-default
+                                .panel-heading
+                                    h4.panel-title
+                                        a(href='/admin/products') Products
+                            .panel.panel-default
+                                .panel-heading
+                                    h4.panel-title
+                                        a(href='/admin/orders') Orders
+                            .panel.panel-default
+                                .panel-heading
+                                    h4.panel-title
+                                        a(href='/admin/customers') Customers
+                    ///nav-bar
+                if categoriesFilter
+                    .col-sm-7
+                        //.blog-post-area
+                            .single-blog-post
+                        block details
+                                //h3 Function
+                                    p Content
+                    .col-sm-2
+                        // nav-bar
+                        .right-sidebar
+                            #accordian2.panel-group.category-products
+                                .panel.panel-default
+                                    .panel-heading
+                                        h4.panel-title
+                                            a(href='/admin/products')= 'all'
+                                each category in categoriesFilter
+                                    //option(value=category.CategoryID)= category.CategoryName
+                                    .panel.panel-default
+                                        .panel-heading
+                                            h4.panel-title
+                                                a(href='/admin/products/' + category.CategoryID)= category.CategoryName
+
+                                //select(id='category', name='category', onchange="this.options[this.selectedIndex].value && (window.location = this.options[this.selectedIndex].value);")
+                                //    option(value='', on_click = href='/admin/products')= 'all'
+                                //    each category in categoriesFilter
+                                //        option(value=category.CategoryID)= category.CategoryName
+                        ///nav-bar
+                else
+                    .col-sm-9
+                        //.blog-post-area
+                            .single-blog-post
+                        block details
+                            //h3 Function
+                                p Content
